@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retrieval-not-binding"
+version = "0.1.0"
+description = "Matched memory interventions for visual episodic retrieval"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = []
+
+[project.optional-dependencies]
+images = ["Pillow==12.0.0"]
+encoder = ["torch", "transformers"]
+
+[project.scripts]
+retrieval-not-binding = "retrieval_not_binding.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

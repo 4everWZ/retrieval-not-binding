@@ -1,0 +1,94 @@
+{
+  "algorithm": {
+    "candidate_rerank_k": 8,
+    "episode_attention": "softmax-beta-cosine-minus-gamma-normalized-age-v1",
+    "fusion": "l2-normalized-query-memory-convex-combination-v1",
+    "history_prototype": "l2-normalized-float64-fsum-mean-v1",
+    "profiles": [
+      {
+        "alpha_micros": 1000000,
+        "beta_micros": 8000000,
+        "gamma_micros": 0,
+        "lambda_micros": 250000,
+        "profile_id": "content-strong"
+      },
+      {
+        "alpha_micros": 1000000,
+        "beta_micros": 8000000,
+        "gamma_micros": 500000,
+        "lambda_micros": 250000,
+        "profile_id": "balanced-recency"
+      },
+      {
+        "alpha_micros": 1000000,
+        "beta_micros": 8000000,
+        "gamma_micros": 1000000,
+        "lambda_micros": 250000,
+        "profile_id": "recency-strong"
+      },
+      {
+        "alpha_micros": 500000,
+        "beta_micros": 4000000,
+        "gamma_micros": 500000,
+        "lambda_micros": 250000,
+        "profile_id": "residual-conservative"
+      }
+    ],
+    "score": "query-memory-fused-global-cosine-half-up-micros-v1"
+  },
+  "candidates": {
+    "candidate_count_per_source_query_kind": 24,
+    "candidate_k": 8,
+    "enrollment_kind_by_query_kind": {
+      "detail": "view",
+      "environment": "detail",
+      "occlusion": "environment",
+      "view": "occlusion"
+    },
+    "ranking": "score-descending-then-entity-handle-utf8-v1",
+    "score": "mean-float64-fsum-global-cosine-then-half-up-micros-v1"
+  },
+  "controls": {
+    "applications": [
+      "correct",
+      "memory_off",
+      "shuffled_binding",
+      "wrong_entity",
+      "raw_multiset"
+    ],
+    "capacity_slots": 5,
+    "raw_multiset_duplicate": "first-observation",
+    "serialized_bytes_per_application": 178
+  },
+  "readers": {
+    "erm": {
+      "profile_id": "balanced-recency"
+    },
+    "kcenter": {
+      "representative_count": 2,
+      "selection": "centroid-medoid-then-cosine-farthest-first-v1"
+    },
+    "mean_prototype": {
+      "selection": "all-visible-normalized-mean-v1"
+    },
+    "reservoir": {
+      "representative_count": 2,
+      "seed": 20260806,
+      "selection": "sha256-priority-without-replacement-v1"
+    }
+  },
+  "representation": {
+    "dimension": 768,
+    "dtype": "float32-le",
+    "model_id": "google/siglip2-base-patch16-naflex",
+    "model_revision": "b53b807d3a2d5e2b3911292f2d69e5341cdc064c",
+    "processor": "official-siglip2-processor-v1",
+    "project_resize_before_processor": false
+  },
+  "schema_version": "retrieval_not_binding.benchmark.v1",
+  "statistics": {
+    "bootstrap_rounds": 2000,
+    "bootstrap_seed": 20260803,
+    "fold_count": 4
+  }
+}

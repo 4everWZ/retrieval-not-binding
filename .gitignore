@@ -1,0 +1,23 @@
+# Credentials, private inputs, and generated outputs
+.env
+.env.*
+/data/
+/models/
+/results/
+/outputs/
+/artifacts/
+/tmp/
+
+# Excluded research documents and local environments
+docs/
+AGENTS.md
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+.DS_Store
+.idea/
+.vscode/
